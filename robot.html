@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robots.txt Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Check Store Robots.txt</h2>
+        <input type="text" id="storeUrl" placeholder="Enter store URL (e.g., example.com)">
+        <button onclick="openRobotsTxt()">Check</button>
+    </div><div class="footer">Developed by MeshCode</div>
+
+<script>
+    function openRobotsTxt() {
+        let storeUrl = document.getElementById('storeUrl').value.trim();
+        
+        if (!storeUrl) {
+            alert("Please enter a valid store URL.");
+            return;
+        }
+        
+        storeUrl = storeUrl.replace(/^(https?:\/\/)?(www\.)?/, ''); 
+        let robotsUrl = "https://" + storeUrl + "/robots.txt";
+        console.log("Opening:", robotsUrl);
+        
+        let newTab = window.open(robotsUrl, '_blank');
+        if (!newTab) {
+            alert("Pop-up blocked! Allow pop-ups and try again.");
+        }
+    }
+</script>
+
+</body>
+</html>
